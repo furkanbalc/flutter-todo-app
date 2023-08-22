@@ -1,4 +1,4 @@
-# my_application
+# flutter-todo-app
 
 A new Flutter project.
 
