@@ -1,6 +1,6 @@
-# flutter-todo-app
+# my_application
 
-This application is a to-do list application for everyday tasks. you can use it with different themes.
+A new Flutter project.
 
 ## Getting Started
 

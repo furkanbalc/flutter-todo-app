@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_application/models/onboard_data.dart';
+import 'package:my_application/view_model/onboard_provider.dart';
 import 'package:my_application/product/constants/app_icon_constants.dart';
 import 'package:my_application/product/constants/app_languages_constants.dart';
 import 'package:my_application/view/home_page.dart';
@@ -28,10 +28,10 @@ class _WelcomePageState extends State<WelcomePage> {
       appBar: _buildAppBarOnBoarding(context),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Consumer<OnBoardData>(
+        child: Consumer<OnboardProvider>(
           builder: (context, onBoardData, child) {
             return PageView.builder(
-              itemCount: onBoardData.screens.length,
+              itemCount: onBoardData.items.length,
               controller: _pageViewController,
               physics: const NeverScrollableScrollPhysics(),
               onPageChanged: (int index) {
@@ -45,13 +45,11 @@ class _WelcomePageState extends State<WelcomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                        height: 400,
-                        child: Image.asset(onBoardData.screens[index].img)),
+                    SizedBox(height: 400, child: Image.asset(onBoardData.items[index].img)),
                     SizedBox(
                       height: 10.0,
                       child: ListView.builder(
-                        itemCount: onBoardData.screens.length,
+                        itemCount: onBoardData.items.length,
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
@@ -59,8 +57,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 3.0),
+                                margin: const EdgeInsets.symmetric(horizontal: 3.0),
                                 width: currentIndex == index ? 25 : 8,
                                 height: 8,
                                 decoration: BoxDecoration(
@@ -76,12 +73,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     buildTextOnBoardSubTitle(onBoardData, index),
                     InkWell(
                       onTap: () async {
-                        if (index == onBoardData.screens.length - 1) {
+                        if (index == onBoardData.items.length - 1) {
                           onBoardData.toggleStatusViewed();
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
                         }
 
                         _pageViewController.nextPage(
@@ -90,10 +84,8 @@ class _WelcomePageState extends State<WelcomePage> {
                         );
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30.0, vertical: 10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0)),
+                        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0)),
                         child: const Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -119,9 +111,9 @@ class _WelcomePageState extends State<WelcomePage> {
     );
   }
 
-  Text buildTextOnBoardSubTitle(OnBoardData onBoardData, int index) {
+  Text buildTextOnBoardSubTitle(OnboardProvider onBoardData, int index) {
     return Text(
-      onBoardData.screens[index].desc,
+      onBoardData.items[index].desc,
       textAlign: TextAlign.center,
       style: const TextStyle(
         fontSize: 14.0,
@@ -130,9 +122,9 @@ class _WelcomePageState extends State<WelcomePage> {
     );
   }
 
-  Text buildTextOnBoardTitle(OnBoardData onBoardData, int index) {
+  Text buildTextOnBoardTitle(OnboardProvider onBoardData, int index) {
     return Text(
-      onBoardData.screens[index].text,
+      onBoardData.items[index].text,
       textAlign: TextAlign.center,
       style: const TextStyle(
         fontSize: 27.0,
@@ -147,10 +139,8 @@ class _WelcomePageState extends State<WelcomePage> {
       actions: [
         TextButton(
           onPressed: () {
-            Provider.of<OnBoardData>(context, listen: false)
-                .toggleStatusViewed();
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Provider.of<OnboardProvider>(context, listen: false).toggleStatusViewed();
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
           },
           child: const Text(
             AppLanguagesConstants.appSkipButton,

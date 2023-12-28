@@ -1,6 +1,6 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:my_application/models/items_data.dart';
+import 'package:my_application/view_model/item_provider.dart';
 import 'package:my_application/product/constants/app_color_constants.dart';
 import 'package:my_application/product/constants/app_languages_constants.dart';
 import 'package:my_application/product/constants/app_padding_constants.dart';
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(
               flex: 8,
-              child: Consumer<ItemsData>(
+              child: Consumer<ItemProvider>(
                 builder: (context, itemData, child) {
                   if (itemData.items.isEmpty) {
                     return Column(
