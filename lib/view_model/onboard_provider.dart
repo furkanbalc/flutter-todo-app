@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_application/enum/shared_key.dart';
 import 'package:my_application/models/onboard_items.dart';
 import 'package:my_application/models/onboard_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,10 +22,10 @@ class OnboardProvider extends ChangeNotifier {
   }
 
   void saveViewedStatusToSharedPref(int status) {
-    _sharedPreferencesObj?.setInt('onBoard', status);
+    _sharedPreferencesObj?.setInt(SharedKeys.onBoard.name, status);
   }
 
   void loadFromSharedPreferences() {
-    _isViewed = _sharedPreferencesObj?.getInt('onBoard') ?? 0;
+    _isViewed = _sharedPreferencesObj?.getInt(SharedKeys.onBoard.name) ?? 0;
   }
 }

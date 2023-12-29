@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_application/enum/shared_key.dart';
 import 'package:my_application/product/themes/blue_theme.dart';
 import 'package:my_application/product/themes/dark_theme.dart';
 import 'package:my_application/product/themes/green_theme.dart';
@@ -41,11 +42,11 @@ class ThemeProvider with ChangeNotifier {
   }
 
   void saveThemeToSharedPreferences(int index) {
-    _sharedPreferencesObj?.setInt('selectedTheme', index);
+    _sharedPreferencesObj?.setInt(SharedKeys.selectedTheme.name, index);
   }
 
   void loadFromSharedPreferences() {
-    _themeNumber = _sharedPreferencesObj?.getInt('selectedTheme') ?? 8;
+    _themeNumber = _sharedPreferencesObj?.getInt(SharedKeys.selectedTheme.name) ?? 8;
     _selectedTheme = _themes[_themeNumber] ?? lightTheme();
   }
 }

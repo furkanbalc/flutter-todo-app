@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
           Padding(
             padding: AppPaddingConstants.allPadding,
             child: Card(
-              color: Colors.grey,
+              color: Theme.of(context).primaryColor.withOpacity(0.3),
               child: Padding(
                 padding: AppPaddingConstants.allPadding,
                 child: Column(

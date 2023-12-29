@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:my_application/enum/shared_key.dart';
 import 'package:my_application/models/item_model.dart';
 import 'package:my_application/product/constants/app_languages_constants.dart';
 import 'package:my_application/product/constants/app_padding_constants.dart';
@@ -74,11 +75,11 @@ class ItemProvider with ChangeNotifier {
     for (var item in items) {
       _itemsAsString.add(jsonEncode(item.toMap()));
     }
-    _sharedPreferences?.setStringList('toDoData', _itemsAsString);
+    _sharedPreferences?.setStringList(SharedKeys.toDoData.name, _itemsAsString);
   }
 
   void loadItemsFromSharedPref() {
-    List<String> tempList = _sharedPreferences?.getStringList('toDoData') ?? [];
+    List<String> tempList = _sharedPreferences?.getStringList(SharedKeys.toDoData.name) ?? [];
 
     _items.clear();
     for (var item in tempList) {

@@ -1,13 +1,16 @@
-# Flutter Todo App
+# my_application
 
-This project was developed with flutter.
+A new Flutter project.
 
-## Materials
+## Getting Started
 
-- **Flutter MVVM Architecture:** The project tried to comply with the MVVM (Model-View-ViewModel) architecture at a simple level, which ensures that the code is organized and manageable.
-- **State Management:** Provider Stata Management.
-- **Theme:** Themes of different colors have been added to the application
+This project is a starting point for a Flutter application.
 
-## About The Project
+A few resources to get you started if this is your first Flutter project:
 
-Creates a list of tasks for users with their daily tasks.  There are methods for adding, subtracting and editing tasks. It offers a pleasant experience with different theme options,
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

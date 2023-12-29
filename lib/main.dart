@@ -15,15 +15,9 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<ItemProvider>(
-          create: (BuildContext context) => ItemProvider(),
-        ),
-        ChangeNotifierProvider<ThemeProvider>(
-          create: (BuildContext context) => ThemeProvider(),
-        ),
-        ChangeNotifierProvider<OnboardProvider>(
-          create: (BuildContext context) => OnboardProvider(),
-        ),
+        ChangeNotifierProvider<ItemProvider>(create: (BuildContext context) => ItemProvider()),
+        ChangeNotifierProvider<ThemeProvider>(create: (BuildContext context) => ThemeProvider()),
+        ChangeNotifierProvider<OnboardProvider>(create: (BuildContext context) => OnboardProvider()),
       ],
       child: const MyApp(),
     ),
